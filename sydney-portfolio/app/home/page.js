@@ -1,15 +1,8 @@
 'use client';
 import { useState } from 'react';
+import { FaFolder, FaGithub, FaFilePdf, FaGamepad, FaWindows, FaLinkedin, FaTwitterSquare, FaUsers, FaChartLine, FaGraduationCap } from 'react-icons/fa';
 import { useData } from '../../lib/useData';
 import Game from '../../components/Game';
-
-const Folder = () => <svg viewBox="0 0 64 52" width="64" height="52"><path d="M2 6a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v34a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#f5c84c" /></svg>;
-const Start = () => <svg viewBox="0 0 40 40" width="40" height="40">{[[2, 2], [21, 2], [2, 21], [21, 21]].map(([x, y]) => <rect key={x + '' + y} x={x} y={y} width="17" height="17" rx="2" fill="#4a7df0" />)}</svg>;
-const Badge = ({ c, t, s = 44 }) => <span className="badge" style={{ background: c, width: s, height: s }}>{t}</span>;
-const Pdf = () => <Badge c="#c8382f" t="PDF" s={56} />;
-const GH = () => <Badge c="#8b93a5" t="GH" />;
-const LI = () => <Badge c="#1f5fbf" t="in" />;
-const TW = () => <Badge c="#3ba4e8" t="t" />;
 
 const go = (u) => u && window.open(u, '_blank', 'noopener');
 const NONE = <p className="mute">Nothing here yet. Add entries from /admin.</p>;
@@ -53,20 +46,20 @@ export default function Home() {
   return (
     <main className="wall desk">
       <div className="icons">
-        <button className="item" onClick={() => open('projects')}><Folder />Projects</button>
-        <button className="item" onClick={() => go(links.github)}><Badge c="#24292f" t="GH" s={64} />Github</button>
-        <button className="item" onClick={() => go(profile.resume_url)}><Pdf />Resume</button>
-        <button className="item" onClick={() => open('game')}><Badge c="#4cc36a" t="🎮" s={64} />Game</button>
+        <button className="item" onClick={() => open('projects')}><FaFolder color="#f5c84c" />Projects</button>
+        <button className="item" onClick={() => go(links.github)}><FaGithub color="#ffffff" />Github</button>
+        <button className="item" onClick={() => go(profile.resume_url)}><FaFilePdf color="#c8382f" />Resume</button>
+        <button className="item" onClick={() => open('game')}><FaGamepad color="#4cc36a" />Game</button>
       </div>
 
       {start && (
         <div className="start">
           <div className="tabs">
-            <button onClick={() => open('projects')} aria-label="Projects"><Folder /></button>
-            <button onClick={() => go(profile.resume_url)} aria-label="Resume"><Pdf /></button>
-            <button className="emo" onClick={() => open('impact')} aria-label="Impact">👥</button>
-            <button className="emo" onClick={() => open('experience')} aria-label="Experience">📈</button>
-            <button className="emo" onClick={() => open('education')} aria-label="Education">🎓</button>
+            <button onClick={() => open('projects')} aria-label="Projects"><FaFolder color="#f5c84c" /></button>
+            <button onClick={() => go(profile.resume_url)} aria-label="Resume"><FaFilePdf color="#c8382f" /></button>
+            <button onClick={() => open('impact')} aria-label="Impact"><FaUsers color="#4a7df0" /></button>
+            <button onClick={() => open('experience')} aria-label="Experience"><FaChartLine color="#4cc36a" /></button>
+            <button onClick={() => open('education')} aria-label="Education"><FaGraduationCap color="#9aa0ad" /></button>
           </div>
           {about && (
             <table className="about"><tbody>
@@ -89,11 +82,11 @@ export default function Home() {
       {win === 'game' && <Win onClose={() => setWin(null)}><Game /></Win>}
 
       <nav className="bar">
-        <button className={start ? 'on' : ''} onClick={() => setStart(!start)} aria-label="Start"><Start /></button>
-        <button onClick={() => open('projects')} aria-label="Projects"><Folder /></button>
-        <button onClick={() => go(links.github)} aria-label="GitHub"><GH /></button>
-        <button onClick={() => go(links.linkedin)} aria-label="LinkedIn"><LI /></button>
-        <button onClick={() => go(links.twitter)} aria-label="Twitter"><TW /></button>
+        <button className={start ? 'on' : ''} onClick={() => setStart(!start)} aria-label="Start"><FaWindows color="#4a7df0" /></button>
+        <button onClick={() => open('projects')} aria-label="Projects"><FaFolder color="#f5c84c" /></button>
+        <button onClick={() => go(links.github)} aria-label="GitHub"><FaGithub color="#9aa0ad" /></button>
+        <button onClick={() => go(links.linkedin)} aria-label="LinkedIn"><FaLinkedin color="#2563c4" /></button>
+        <button onClick={() => go(links.twitter)} aria-label="Twitter"><FaTwitterSquare color="#3ba4e8" /></button>
       </nav>
     </main>
   );
