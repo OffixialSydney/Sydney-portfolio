@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { FaFolder, FaGithub, FaFilePdf, FaGamepad, FaWindows, FaLinkedin, FaTwitterSquare, FaUsers, FaChartLine, FaGraduationCap } from 'react-icons/fa';
+import { FaFolder, FaGithub, FaFilePdf, FaGamepad, FaWindows, FaLinkedin, FaUsers, FaChartLine, FaGraduationCap } from 'react-icons/fa';
+import { FaSquareXTwitter } from 'react-icons/fa6';
 import { useData } from '../../lib/useData';
 import Game from '../../components/Game';
 import Widgets from '../../components/Widgets';
@@ -87,7 +88,7 @@ export default function Home() {
         <button onClick={() => open('projects')} aria-label="Projects"><FaFolder color="#f5c84c" /></button>
         <button onClick={() => go(links.github)} aria-label="GitHub"><FaGithub color="#9aa0ad" /></button>
         <button onClick={() => go(links.linkedin)} aria-label="LinkedIn"><FaLinkedin color="#2563c4" /></button>
-        <button onClick={() => go(links.twitter)} aria-label="Twitter"><FaTwitterSquare color="#3ba4e8" /></button>
+        <button onClick={() => go(links.twitter)} aria-label="X (Twitter)"><FaSquareXTwitter color="#e7e9ea" /></button>
       </nav>
 
       <Widgets />
