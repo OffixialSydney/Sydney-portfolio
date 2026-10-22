@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import WinLogo from '../components/WinLogo';
+import { playKey } from '../lib/sounds';
 
 const QUOTES = [
   'A bug is just a feature that has not been documented yet.',
@@ -47,6 +48,7 @@ export default function Intro() {
       for (let i = 1; i <= quote.length; i++) {
         if (dead) return;
         setText(quote.slice(0, i));
+        if (quote[i - 1] !== ' ') playKey(); // keyboard sound for each typed letter
         await wait(45);
       }
       await wait(1500);
