@@ -2,6 +2,7 @@ import './globals.css';
 import ClickSound from '../components/ClickSound';
 
 export const metadata = { title: 'Sydney | Portfolio', description: 'Web and mobile developer portfolio' };
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
 export default function RootLayout({ children }) {
   return (
