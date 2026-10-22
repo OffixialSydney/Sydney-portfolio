@@ -1,8 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaFolder, FaGithub, FaFilePdf, FaGamepad, FaWindows, FaLinkedin, FaTwitterSquare, FaUsers, FaChartLine, FaGraduationCap } from 'react-icons/fa';
 import { useData } from '../../lib/useData';
 import Game from '../../components/Game';
+import Widgets from '../../components/Widgets';
 
 const go = (u) => u && window.open(u, '_blank', 'noopener');
 const NONE = <p className="mute">Nothing here yet. Add entries from /admin.</p>;
@@ -15,22 +16,6 @@ function Win({ title, onClose, children }) {
       {title && <><h2>{title}</h2><hr /></>}
       {children}
     </section>
-  );
-}
-
-function Clock() {
-  const [now, setNow] = useState(null);
-  useEffect(() => {
-    setNow(new Date());
-    const t = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  if (!now) return null;
-  return (
-    <div className="clock">
-      <span>{now.toLocaleTimeString('en-US')}</span>
-      <span>{now.toLocaleDateString('en-US')}</span>
-    </div>
   );
 }
 
@@ -103,8 +88,9 @@ export default function Home() {
         <button onClick={() => go(links.github)} aria-label="GitHub"><FaGithub color="#9aa0ad" /></button>
         <button onClick={() => go(links.linkedin)} aria-label="LinkedIn"><FaLinkedin color="#2563c4" /></button>
         <button onClick={() => go(links.twitter)} aria-label="Twitter"><FaTwitterSquare color="#3ba4e8" /></button>
-        <Clock />
       </nav>
+
+      <Widgets />
     </main>
   );
 }
