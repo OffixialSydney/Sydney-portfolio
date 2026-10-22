@@ -40,13 +40,16 @@ export default function Intro() {
 
   useEffect(() => {
     let dead = false;
-    const picks = [...QUOTES].sort(() => Math.random() - 0.5).slice(0, 3); // new quotes on every visit
+    // one random quote per visit, then straight to the welcome page
+    const quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     (async () => {
-      for (const q of picks) {
-        for (let i = 1; i <= q.length; i++) { if (dead) return; setText(q.slice(0, i)); await wait(45); }
-        await wait(1500);
+      for (let i = 1; i <= quote.length; i++) {
+        if (dead) return;
+        setText(quote.slice(0, i));
+        await wait(45);
       }
+      await wait(1500);
       if (!dead) router.push('/welcome');
     })();
     return () => { dead = true; };
